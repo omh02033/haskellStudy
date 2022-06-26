@@ -27,9 +27,14 @@ scanSum (n:ns) = n : (scanSum (sumFunc n ns))
 
 -- diffs는 인접 항목들의 차이의 리스트를 반환한다. 즉 diffs [3,5,6,8]은 [2,1,2]을 반환한다.
 -- (힌트: 두 리스트를 취해 대응하는 항목들의 차를 계산하는 보조 함수를 작성한다. 또다른 방법은 인자가 적어도 둘인 리스트는 (x:y:ys) 패턴에 일치한다는 사실을 활용하는 것이다.
+{-
 minusFunc :: Integer -> [Integer] -> [Integer]
 minusFunc _ [] = []
 minusFunc m (n:ns) = n - m : ns
 diffs :: [Integer] -> [Integer]
 diffs [] = []
-diffs (n:ns) = (minusFunc n ns) : (diffs ns)
+diffs (n:ns) = (minusFunc n ns) : diffs ns
+-}
+diffs :: [Integer] -> [Integer]
+diffs [_] = []
+diffs (m:n:ns) = n-m : diffs (n:ns)
